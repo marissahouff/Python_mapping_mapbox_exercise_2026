@@ -35,15 +35,11 @@ import os
 
 # --- A) Your Mapbox Public Access Token ---
 # Starts with "pk." — found at: https://account.mapbox.com/access-tokens/
-MAPBOX_TOKEN = "PASTE_YOUR_MAPBOX_TOKEN_HERE"
+MAPBOX_TOKEN = "pk.eyJ1IjoibWFyaXNzYWhvdWZmIiwiYSI6ImNtbHRxbnZyNzAzOXMzZ3EwaTk3dGI3N2YifQ.G7G7J7DyAWWxdslqbPvkmg"
 
 # --- B) Your Mapbox Style URL ---
-# HOW TO GET IT:
-#   1. Go to https://studio.mapbox.com
-#   2. Click your custom style
-#   3. Click "Share" button → set style to "Public"
-#   4. Copy the URL that looks like: mapbox://styles/yourusername/yourstyleid
-MAPBOX_STYLE_URL = "mapbox://styles/YOUR_USERNAME/YOUR_STYLE_ID"
+# Using Mapbox's built-in "Streets" style (dark theme)
+MAPBOX_STYLE_URL = "mapbox://styles/mapbox/streets-v12"
 
 # --- Validation ---
 if MAPBOX_TOKEN == "PASTE_YOUR_MAPBOX_TOKEN_HERE":

@@ -41,7 +41,7 @@ import time             # For pausing between API calls
 #   3. Copy your "Default public token" (starts with "pk.")
 #   4. Paste it below, replacing the placeholder text
 
-MAPBOX_TOKEN = "PASTE_YOUR_MAPBOX_TOKEN_HERE"
+MAPBOX_TOKEN = "pk.eyJ1IjoibWFyaXNzYWhvdWZmIiwiYSI6ImNtbHRxbnZyNzAzOXMzZ3EwaTk3dGI3N2YifQ.G7G7J7DyAWWxdslqbPvkmg"
 
 if MAPBOX_TOKEN == "PASTE_YOUR_MAPBOX_TOKEN_HERE":
     print("ERROR: You need to add your Mapbox access token!")

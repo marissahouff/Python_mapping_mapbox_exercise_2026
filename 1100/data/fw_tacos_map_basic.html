@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c59ac9d61cb2759d407cfed935bce31c {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; top: 10px; left: 50%; transform: translateX(-50%);
+     z-index: 1000; background-color: white; padding: 10px 20px;
+     border: 2px solid #4D1979; border-radius: 8px; font-family: Georgia, serif;
+     font-size: 16px; font-weight: bold; color: #4D1979; box-shadow: 2px 2px 6px rgba(0,0,0,0.3);">
+    🌮 Best Tacos in Fort Worth
+</div>
+    
+<div style="position: fixed; bottom: 30px; left: 20px; z-index: 1000;
+     background-color: white; padding: 12px; border: 2px solid #4D1979;
+     border-radius: 8px; font-family: Arial, sans-serif; font-size: 12px;">
+    <b style="color: #4D1979;">Neighborhoods</b><br>
+    <span style="color: darkred;">&#9679;</span> Stockyards / Near Northside<br>
+    <span style="color: orange;">&#9679;</span> Near Southside<br>
+    <span style="color: purple;">&#9679;</span> West 7th / Cultural District<br>
+    <span style="color: darkblue;">&#9679;</span> Hulen / Cityview<br>
+    <span style="color: green;">&#9679;</span> Camp Bowie / Ridglea<br>
+    <span style="color: cadetblue;">&#9679;</span> River Oaks<br>
+</div>
+    
+            <div class="folium-map" id="map_c59ac9d61cb2759d407cfed935bce31c" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c59ac9d61cb2759d407cfed935bce31c = L.map(
+                "map_c59ac9d61cb2759d407cfed935bce31c",
+                {
+                    center: [32.74750916666667, -97.36900308333334],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_46fcd0edecccee48dff3edab0e8e14d3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_46fcd0edecccee48dff3edab0e8e14d3.addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var marker_5f1d5db4e2df6a1bcd7c1cef61c01606 = L.marker(
+                [32.778235, -97.347006],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_4f575ea19e5c2a7439edb7358dd6dabe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkred",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2fdbf6653c73ef70a05ef31647b3c896 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_e0d18718cf9f32995859e931eeb7bc59 = $(`<div id="html_e0d18718cf9f32995859e931eeb7bc59" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Salsa Limon         </h4>         <b>📍 1407 N Main St, Fort Worth, TX 76164</b><br>         <i style="color: #666;">Stockyards</i><br><br>         <b>Known for:</b> Birria tacos, street-style tacos<br><br>         <span style="font-size: 12px;">A beloved Fort Worth institution serving authentic Mexican street tacos. Known for birria and a rotating menu of traditional preparations. The Stockyards location is a local favorite.</span>     </div>     </div>`)[0];
+                popup_2fdbf6653c73ef70a05ef31647b3c896.setContent(html_e0d18718cf9f32995859e931eeb7bc59);
+            
+        
+
+        marker_5f1d5db4e2df6a1bcd7c1cef61c01606.bindPopup(popup_2fdbf6653c73ef70a05ef31647b3c896)
+        ;
+
+        
+    
+    
+            marker_5f1d5db4e2df6a1bcd7c1cef61c01606.bindTooltip(
+                `<div>
+                     🌮 Salsa Limon
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5f1d5db4e2df6a1bcd7c1cef61c01606.setIcon(icon_4f575ea19e5c2a7439edb7358dd6dabe);
+            
+    
+            var marker_9c36bc74331a0f75bfe7e39ae5642da9 = L.marker(
+                [32.78466, -97.348314],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_cb4876899ce5b76f03a5f71e3386bfc2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d09c233296d8ccd5ec19b9b53260a362 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a833b3ea9ee4268e27eb5993c2506cdb = $(`<div id="html_a833b3ea9ee4268e27eb5993c2506cdb" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Joe T. Garcia's         </h4>         <b>📍 2201 N Commerce St, Fort Worth, TX 76106</b><br>         <i style="color: #666;">Near Northside</i><br><br>         <b>Known for:</b> Family-style Mexican, fajita tacos<br><br>         <span style="font-size: 12px;">A Fort Worth institution since 1935, Joe T. Garcia's is a multi-room Mexican restaurant famous for its sprawling outdoor patio. The fajita and bean tacos are legendary, and the atmosphere is unmatched.</span>     </div>     </div>`)[0];
+                popup_d09c233296d8ccd5ec19b9b53260a362.setContent(html_a833b3ea9ee4268e27eb5993c2506cdb);
+            
+        
+
+        marker_9c36bc74331a0f75bfe7e39ae5642da9.bindPopup(popup_d09c233296d8ccd5ec19b9b53260a362)
+        ;
+
+        
+    
+    
+            marker_9c36bc74331a0f75bfe7e39ae5642da9.bindTooltip(
+                `<div>
+                     🌮 Joe T. Garcia's
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9c36bc74331a0f75bfe7e39ae5642da9.setIcon(icon_cb4876899ce5b76f03a5f71e3386bfc2);
+            
+    
+            var marker_cc82bd246122814e0eaaa26e97a9b4fb = L.marker(
+                [32.730844, -97.341379],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_d65d7a24d233737c382566b48c6b5857 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d48041e3e7a852b3b51d01e08d5ba0cb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_94dfacea6f1df21e5ce4fbc9c7ebb882 = $(`<div id="html_94dfacea6f1df21e5ce4fbc9c7ebb882" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Benito's         </h4>         <b>📍 1450 W Magnolia Ave, Fort Worth, TX 76104</b><br>         <i style="color: #666;">Near Southside</i><br><br>         <b>Known for:</b> Interior Mexican, tacos al carbon<br><br>         <span style="font-size: 12px;">Celebrated for interior Mexican cooking on the Near Southside, Benito's offers tacos that go beyond Tex-Mex into deeper regional traditions. A cornerstone of Fort Worth's culinary scene.</span>     </div>     </div>`)[0];
+                popup_d48041e3e7a852b3b51d01e08d5ba0cb.setContent(html_94dfacea6f1df21e5ce4fbc9c7ebb882);
+            
+        
+
+        marker_cc82bd246122814e0eaaa26e97a9b4fb.bindPopup(popup_d48041e3e7a852b3b51d01e08d5ba0cb)
+        ;
+
+        
+    
+    
+            marker_cc82bd246122814e0eaaa26e97a9b4fb.bindTooltip(
+                `<div>
+                     🌮 Benito's
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cc82bd246122814e0eaaa26e97a9b4fb.setIcon(icon_d65d7a24d233737c382566b48c6b5857);
+            
+    
+            var marker_8b3a9718f355fd1aa788bea25cb361f1 = L.marker(
+                [32.749454, -97.357465],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_f131d493b3f77f7760808319e0079a96 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7bac9615b3c968f06b2c271dd2cb75a1 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_a002cc9fb38d9c680a45c30b6b62e732 = $(`<div id="html_a002cc9fb38d9c680a45c30b6b62e732" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Taco Heads         </h4>         <b>📍 2818 Morton St, Fort Worth, TX 76107</b><br>         <i style="color: #666;">West 7th (Cultural District)</i><br><br>         <b>Known for:</b> Creative gourmet tacos<br><br>         <span style="font-size: 12px;">Taco Heads brings a creative, gourmet approach to the taco. Located in the Cultural District, this spot is known for unexpected flavor combinations and high-quality ingredients in a casual setting.</span>     </div>     </div>`)[0];
+                popup_7bac9615b3c968f06b2c271dd2cb75a1.setContent(html_a002cc9fb38d9c680a45c30b6b62e732);
+            
+        
+
+        marker_8b3a9718f355fd1aa788bea25cb361f1.bindPopup(popup_7bac9615b3c968f06b2c271dd2cb75a1)
+        ;
+
+        
+    
+    
+            marker_8b3a9718f355fd1aa788bea25cb361f1.bindTooltip(
+                `<div>
+                     🌮 Taco Heads
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8b3a9718f355fd1aa788bea25cb361f1.setIcon(icon_f131d493b3f77f7760808319e0079a96);
+            
+    
+            var marker_94cecce6166ee7a8d3020d1571b6f350 = L.marker(
+                [32.705276, -97.388684],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_af23342b6e3428160c5aef02f963bfb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkblue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_668fa79fea3e79bc95134d921d8fe97b = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_30c8193220b634790d7f9dc8947e6185 = $(`<div id="html_30c8193220b634790d7f9dc8947e6185" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Velvet Taco         </h4>         <b>📍 3001 S Hulen St, Fort Worth, TX 76109</b><br>         <i style="color: #666;">Hulen / Cityview</i><br><br>         <b>Known for:</b> Rotating creative tacos, WTF taco<br><br>         <span style="font-size: 12px;">A Texas-born chain that reinvents what a taco can be. Velvet Taco offers international-inspired fillings from Nashville hot chicken to spicy tikka masala. The weekly rotating WTF (Weekly Taco Feature) is a must-try.</span>     </div>     </div>`)[0];
+                popup_668fa79fea3e79bc95134d921d8fe97b.setContent(html_30c8193220b634790d7f9dc8947e6185);
+            
+        
+
+        marker_94cecce6166ee7a8d3020d1571b6f350.bindPopup(popup_668fa79fea3e79bc95134d921d8fe97b)
+        ;
+
+        
+    
+    
+            marker_94cecce6166ee7a8d3020d1571b6f350.bindTooltip(
+                `<div>
+                     🌮 Velvet Taco
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_94cecce6166ee7a8d3020d1571b6f350.setIcon(icon_af23342b6e3428160c5aef02f963bfb4);
+            
+    
+            var marker_83f8def01057a8715208b4364e8eb09c = L.marker(
+                [32.722875, -97.449902],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_8e5d3a80f91bc1b17fc52fa3a6ebc45f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b9e8c702a54aa1986191199b5238f281 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6d949d626e2f880b33e30ad1f23dbfdd = $(`<div id="html_6d949d626e2f880b33e30ad1f23dbfdd" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Digg's Taco Shop         </h4>         <b>📍 7750 Camp Bowie W Blvd, Fort Worth, TX 76116</b><br>         <i style="color: #666;">Camp Bowie West</i><br><br>         <b>Known for:</b> Breakfast and street tacos<br><br>         <span style="font-size: 12px;">An unpretentious taco shop on Camp Bowie beloved for its no-fuss approach and fresh ingredients. The breakfast tacos draw a loyal morning crowd, and the street tacos offer great value.</span>     </div>     </div>`)[0];
+                popup_b9e8c702a54aa1986191199b5238f281.setContent(html_6d949d626e2f880b33e30ad1f23dbfdd);
+            
+        
+
+        marker_83f8def01057a8715208b4364e8eb09c.bindPopup(popup_b9e8c702a54aa1986191199b5238f281)
+        ;
+
+        
+    
+    
+            marker_83f8def01057a8715208b4364e8eb09c.bindTooltip(
+                `<div>
+                     🌮 Digg's Taco Shop
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_83f8def01057a8715208b4364e8eb09c.setIcon(icon_8e5d3a80f91bc1b17fc52fa3a6ebc45f);
+            
+    
+            var marker_99e0b6398bfff897309670d7c77b0333 = L.marker(
+                [32.751365, -97.357597],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_94e7f3cf92978719f0810807864cc4b6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_79aefe74fc04a0e9ebc2e325495e53d8 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_eafa72bc58ac12f2dad501ef75127600 = $(`<div id="html_eafa72bc58ac12f2dad501ef75127600" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Revolver Taco Lounge         </h4>         <b>📍 2822 W 7th St, Fort Worth, TX 76107</b><br>         <i style="color: #666;">West 7th</i><br><br>         <b>Known for:</b> Upscale Mexican, masa-forward tacos<br><br>         <span style="font-size: 12px;">Revolver is one of Fort Worth's most acclaimed taco destinations, known for housemade masa and sophisticated preparations drawing from interior Mexican traditions. Highly regarded by Texas Monthly and national food critics.</span>     </div>     </div>`)[0];
+                popup_79aefe74fc04a0e9ebc2e325495e53d8.setContent(html_eafa72bc58ac12f2dad501ef75127600);
+            
+        
+
+        marker_99e0b6398bfff897309670d7c77b0333.bindPopup(popup_79aefe74fc04a0e9ebc2e325495e53d8)
+        ;
+
+        
+    
+    
+            marker_99e0b6398bfff897309670d7c77b0333.bindTooltip(
+                `<div>
+                     🌮 Revolver Taco Lounge
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_99e0b6398bfff897309670d7c77b0333.setIcon(icon_94e7f3cf92978719f0810807864cc4b6);
+            
+    
+            var marker_7c9fc1ec1f210012604f605c8a2f0447 = L.marker(
+                [32.727419, -97.331549],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_87b672ded65efeeab934b11db0240a31 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1fd46bab3afae68de40b125fbe687b2d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4fea59eb0f4e688f7cbf3239d8604a1d = $(`<div id="html_4fea59eb0f4e688f7cbf3239d8604a1d" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             La Familia Cortez         </h4>         <b>📍 1521 Hemphill St, Fort Worth, TX 76104</b><br>         <i style="color: #666;">Near Southside</i><br><br>         <b>Known for:</b> Breakfast tacos, carne guisada<br><br>         <span style="font-size: 12px;">A neighborhood taqueria beloved for its carne guisada and breakfast tacos. La Familia Cortez represents the kind of everyday taqueria that Fort Worth's Hispanic communities have sustained for decades.</span>     </div>     </div>`)[0];
+                popup_1fd46bab3afae68de40b125fbe687b2d.setContent(html_4fea59eb0f4e688f7cbf3239d8604a1d);
+            
+        
+
+        marker_7c9fc1ec1f210012604f605c8a2f0447.bindPopup(popup_1fd46bab3afae68de40b125fbe687b2d)
+        ;
+
+        
+    
+    
+            marker_7c9fc1ec1f210012604f605c8a2f0447.bindTooltip(
+                `<div>
+                     🌮 La Familia Cortez
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7c9fc1ec1f210012604f605c8a2f0447.setIcon(icon_87b672ded65efeeab934b11db0240a31);
+            
+    
+            var marker_6e9650d203b81b98a30795a5299f8e17 = L.marker(
+                [32.784149, -97.348839],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_951fdf8526657db365ef5498294d493e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_22cdfb7d233c61a3501f8b3f2b4bd30a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9958cee735d75a845c792bdc2f7c954e = $(`<div id="html_9958cee735d75a845c792bdc2f7c954e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Esperanza's Mexican Bakery & Cafe         </h4>         <b>📍 2122 N Main St, Fort Worth, TX 76164</b><br>         <i style="color: #666;">Near Northside</i><br><br>         <b>Known for:</b> Breakfast tacos, pan dulce<br><br>         <span style="font-size: 12px;">More than a bakery, Esperanza's anchors the Near Northside with its scratch-made breakfast tacos and legendary pan dulce. The tacos de barbacoa on weekend mornings are a Fort Worth rite of passage.</span>     </div>     </div>`)[0];
+                popup_22cdfb7d233c61a3501f8b3f2b4bd30a.setContent(html_9958cee735d75a845c792bdc2f7c954e);
+            
+        
+
+        marker_6e9650d203b81b98a30795a5299f8e17.bindPopup(popup_22cdfb7d233c61a3501f8b3f2b4bd30a)
+        ;
+
+        
+    
+    
+            marker_6e9650d203b81b98a30795a5299f8e17.bindTooltip(
+                `<div>
+                     🌮 Esperanza's Mexican Bakery & Cafe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e9650d203b81b98a30795a5299f8e17.setIcon(icon_951fdf8526657db365ef5498294d493e);
+            
+    
+            var marker_96d022088957f73c1f02814bbd902c09 = L.marker(
+                [32.730415, -97.342222],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_f9401db68f81e1200b430163d3afc314 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8e8789a916c0302aa886e3c8af19682d = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_2e0dc1a8a66b90ce43456d9dd688d222 = $(`<div id="html_2e0dc1a8a66b90ce43456d9dd688d222" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Ellerbe Fine Foods         </h4>         <b>📍 1501 W Magnolia Ave, Fort Worth, TX 76104</b><br>         <i style="color: #666;">Near Southside</i><br><br>         <b>Known for:</b> Farm-to-table tacos (on menu rotation)<br><br>         <span style="font-size: 12px;">While not exclusively a taco shop, Ellerbe's seasonal menu often features some of Fort Worth's most creative taco preparations using local and farm-sourced ingredients. A pillar of Near Southside dining.</span>     </div>     </div>`)[0];
+                popup_8e8789a916c0302aa886e3c8af19682d.setContent(html_2e0dc1a8a66b90ce43456d9dd688d222);
+            
+        
+
+        marker_96d022088957f73c1f02814bbd902c09.bindPopup(popup_8e8789a916c0302aa886e3c8af19682d)
+        ;
+
+        
+    
+    
+            marker_96d022088957f73c1f02814bbd902c09.bindTooltip(
+                `<div>
+                     🌮 Ellerbe Fine Foods
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_96d022088957f73c1f02814bbd902c09.setIcon(icon_f9401db68f81e1200b430163d3afc314);
+            
+    
+            var marker_5277ff6f6b0d33c671d32944b019f77e = L.marker(
+                [32.72087, -97.43155],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_bf051146bdbe56935059f713263460b9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "darkgreen",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_826fec57d1b1f4effc106c4350dae0f9 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_79d997d639ea15f23e32724607311920 = $(`<div id="html_79d997d639ea15f23e32724607311920" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             El Paseo de Tacos         </h4>         <b>📍 6713 Camp Bowie Blvd, Fort Worth, TX 76116</b><br>         <i style="color: #666;">Ridglea</i><br><br>         <b>Known for:</b> Tacos al pastor, street tacos<br><br>         <span style="font-size: 12px;">A no-frills taqueria that consistently delivers on the fundamentals: fresh tortillas, properly seasoned fillings, and good salsa. The al pastor, shaved off a rotating spit, is the signature order.</span>     </div>     </div>`)[0];
+                popup_826fec57d1b1f4effc106c4350dae0f9.setContent(html_79d997d639ea15f23e32724607311920);
+            
+        
+
+        marker_5277ff6f6b0d33c671d32944b019f77e.bindPopup(popup_826fec57d1b1f4effc106c4350dae0f9)
+        ;
+
+        
+    
+    
+            marker_5277ff6f6b0d33c671d32944b019f77e.bindTooltip(
+                `<div>
+                     🌮 El Paseo de Tacos
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5277ff6f6b0d33c671d32944b019f77e.setIcon(icon_bf051146bdbe56935059f713263460b9);
+            
+    
+            var marker_a5d46d34fd24272a54abf3c49467bea8 = L.marker(
+                [32.784548, -97.38353],
+                {
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+        
+    
+            var icon_d2287e3b7a2aac683b93018d77e35162 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "cadetblue",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2f749c941d4c7f22cc5e772c43c06565 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_652894f5125945ca5240aa75481e5fec = $(`<div id="html_652894f5125945ca5240aa75481e5fec" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial, sans-serif; font-size: 13px; min-width: 220px; max-width: 300px;">         <h4 style="margin: 0 0 6px 0; color: #4D1979; border-bottom: 1px solid #ccc; padding-bottom: 4px;">             Mily's Cafe         </h4>         <b>📍 4301 River Oaks Blvd, Fort Worth, TX 76114</b><br>         <i style="color: #666;">River Oaks</i><br><br>         <b>Known for:</b> Tex-Mex breakfast tacos<br><br>         <span style="font-size: 12px;">A family-run neighborhood staple serving Tex-Mex breakfast and lunch. Mily's is trusted by locals for honest, home-style tacos with portions that more than satisfy.</span>     </div>     </div>`)[0];
+                popup_2f749c941d4c7f22cc5e772c43c06565.setContent(html_652894f5125945ca5240aa75481e5fec);
+            
+        
+
+        marker_a5d46d34fd24272a54abf3c49467bea8.bindPopup(popup_2f749c941d4c7f22cc5e772c43c06565)
+        ;
+
+        
+    
+    
+            marker_a5d46d34fd24272a54abf3c49467bea8.bindTooltip(
+                `<div>
+                     🌮 Mily's Cafe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a5d46d34fd24272a54abf3c49467bea8.setIcon(icon_d2287e3b7a2aac683b93018d77e35162);
+            
+    
+            var layer_control_e746184f8b452df83e141834953a2e3b_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_46fcd0edecccee48dff3edab0e8e14d3,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_e746184f8b452df83e141834953a2e3b = L.control.layers(
+                layer_control_e746184f8b452df83e141834953a2e3b_layers.base_layers,
+                layer_control_e746184f8b452df83e141834953a2e3b_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_c59ac9d61cb2759d407cfed935bce31c);
+
+        
+</script>
+</html>
